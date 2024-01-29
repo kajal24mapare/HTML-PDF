@@ -57,3 +57,35 @@ PhantomJS Engine:
 
 - PhantomJS is a headless web browser scriptable with JavaScript. It is often used as a browser automation tool or for tasks that involve web page interaction, rendering, and testing. The term "headless" refers to the fact that PhantomJS operates without a graphical user interface (GUI), making it suitable for server-side and command-line usage.
 - It's worth noting that PhantomJS was widely used in the past for tasks like headless browsing and web page testing. However, it is considered deprecated, and development has officially ceased. Users are encouraged to migrate to alternative tools, such as Puppeteer with Headless Chrome, which offers similar functionality and is actively maintained by the Chrome team. As a result, libraries like html-pdf that rely on PhantomJS may be considered outdated in favor of more modern alternatives.
+
+---
+
+The architecture for an example involving the html-pdf library might look like this:
+
+1. Node.js Application:
+
+Your Node.js application is the main component that orchestrates the PDF generation process. It contains the logic for handling HTTP requests, generating dynamic HTML content, and converting that content to PDF.
+
+2. Express.js (Optional):
+
+If your application is web-based, you might use the Express.js framework to handle HTTP requests and route them to the appropriate handlers.
+
+3. html-pdf Library:
+
+The html-pdf library is a Node.js library used for converting HTML to PDF. It typically interfaces with a headless browser engine (e.g., PhantomJS or Puppeteer) to render the HTML and generate the PDF.
+
+4. HTML Content:
+
+Your application dynamically generates HTML content based on data retrieved from a database, an API, or other sources. This HTML content may include placeholders for dynamic data.
+
+5. PDF Conversion Options:
+
+You define options for the PDF conversion process, such as page size, margins, header, footer, etc. These options are passed to the html-pdf library.
+
+6. Rendering Engine (PhantomJS, Puppeteer, etc.):
+
+The html-pdf library interfaces with a rendering engine to convert the HTML content to a PDF. In the case of PhantomJS, it was traditionally used as the rendering engine. Alternatively, modern libraries like Puppeteer can be used with Headless Chrome.
+
+7. PDF Buffer:
+
+The result of the PDF conversion is a binary buffer containing the raw PDF data. This buffer can be saved to a file, sent as a response to an HTTP request, or further processed as needed.
